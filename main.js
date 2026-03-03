@@ -2,10 +2,13 @@ const $year = document.querySelector("#year");
 const $month = document.querySelector("#month");
 const $prev = document.querySelector("#prev");
 const $next = document.querySelector("#next");
+const $calendar = document.querySelector("#calendar");
 
-const today = new Date();
-let currentYear = today.getFullYear();
-let currentMonth = today.getMonth();
+let state = {
+  year: new Date().getFullYear(),
+  month: new Date().getMonth(),
+  selectedDay: null,
+};
 
 renderCalendarHeader = (year, month) => {
   $year.innerHTML = `${year}년`;
@@ -24,7 +27,7 @@ renderCalendar = (year, month) => {
     "금요일",
     "토요일",
   ];
-  renderCalendarHeader(year, month);
+  renderCalendarHeader(state.year, state.month);
 
   let html = "";
   // 요일 출력
@@ -59,22 +62,23 @@ renderCalendar = (year, month) => {
 
   document.querySelector("#calendar").innerHTML = html;
 };
+// 이전 달 버튼
 $prev.addEventListener("click", () => {
-  currentMonth--;
-  if (currentMonth < 0) {
-    currentMonth = 11;
-    currentYear--;
+  state.month--;
+  if (state.month < 0) {
+    state.month = 11;
+    state.year--;
   }
-  renderCalendar(currentYear, currentMonth);
+  renderCalendar(state.year, state.month);
 });
-
+// 이번 달 버튼
 $next.addEventListener("click", () => {
-  currentMonth++;
-  if (currentMonth > 11) {
-    currentMonth = 0;
-    currentYear++;
+  state.month++;
+  if (state.month > 11) {
+    state.month = 0;
+    state.year++;
   }
-  renderCalendar(currentYear, currentMonth);
+  renderCalendar(state.year, state.month);
 });
 
-renderCalendar(currentYear, currentMonth);
+renderCalendar(state.year, state.month);
