@@ -83,3 +83,14 @@
 .month-control button:hover {
   background-color: #ccd7f5;
 }
+.holiday {
+  color: red;
+  font-weight: bold;
+}
+
+.blocked {
+  background: #f3f3f3;
+  color: #aaa;
+  pointer-events: none;
+  cursor: not-allowed;
+}
