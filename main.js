@@ -4,10 +4,10 @@ const $prev = document.querySelector("#prev");
 const $next = document.querySelector("#next");
 const $calendar = document.querySelector("#calendar");
 
+// 상태관리 객체
 let state = {
   year: new Date().getFullYear(),
   month: new Date().getMonth(),
-  selectedDay: null,
 };
 
 renderCalendarHeader = (year, month) => {
@@ -71,7 +71,7 @@ $prev.addEventListener("click", () => {
   }
   renderCalendar(state.year, state.month);
 });
-// 이번 달 버튼
+// 다음 달 버튼
 $next.addEventListener("click", () => {
   state.month++;
   if (state.month > 11) {
