@@ -1,0 +1,24 @@
+<!-- reservation.html -->
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예약 확인</title>
+  </head>
+  <body>
+    <h1>예약 확인 페이지</h1>
+    <p id="display">선택한 날짜:</p>
+
+    <script>
+      // URL에서 ?date=YYYY-MM-DD 가져오기
+      const params = new URLSearchParams(window.location.search);
+      const date = params.get("date"); // 'date'라는 이름으로 전달된 값
+
+      // 화면에 표시
+      document.getElementById("display").textContent = date
+        ? `선택한 날짜: ${date}`
+        : "날짜가 전달되지 않았습니다.";
+    </script>
+  </body>
+</html>
